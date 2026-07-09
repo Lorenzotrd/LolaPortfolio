@@ -126,14 +126,14 @@ body::before{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;
 @media(max-width:680px){.aud-grid{grid-template-columns:1fr}.aud-gender{flex-direction:column;align-items:flex-start;gap:18px;padding:24px 22px}.aud-gender .big{white-space:normal}.aud-split{width:100%;min-width:0;flex:none}.aud-splitbar{width:100%;flex:0 0 100%}.aud-legend{width:100%;gap:12px;flex-wrap:wrap;white-space:normal}}
 
 /* BIG STAT CARDS */
-.bigstats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.bigstats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
 .bstat{background:#fff;border:1px solid rgba(36,29,21,.12);border-radius:16px;padding:18px 16px 16px;box-shadow:0 18px 34px -28px rgba(36,29,21,.34);transition:transform .3s var(--t)}
 .bstat:hover{transform:translate(-2px,-2px)}
 .bstat .bn{font-family:var(--disp);font-size:clamp(30px,3.5vw,42px);line-height:1;font-weight:800;letter-spacing:0}
 .bstat .bn em{font-style:normal;color:var(--accent)}
 .bstat .bk{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0;margin-top:8px;color:var(--ink)}
 .bstat .bs{font-size:11px;color:var(--soft);margin-top:2px}
-@media(max-width:680px){.bigstats{grid-template-columns:1fr 1fr}.bstat .bn{font-size:26px}}
+@media(max-width:680px){.bigstats{grid-template-columns:1fr}.bstat .bn{font-size:26px}}
 
 /* PHONE + STATS SPLIT */
 .numbers-split{display:grid;grid-template-columns:340px 1fr;gap:28px;align-items:center;margin:24px 0 8px}
@@ -167,7 +167,15 @@ body::before{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;
 .testis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
 .testi{background:#fff;border:1px solid rgba(36,29,21,.12);border-radius:16px 16px 16px 4px;box-shadow:0 16px 30px -26px rgba(36,29,21,.34);padding:17px 18px;font-size:13.5px;line-height:1.5}
 .testi .who{font-family:var(--sans);font-size:13px;font-weight:750;color:var(--accent);margin-top:9px}
+.testis.marquee{display:block;overflow:hidden;margin:6px -30px 0;padding:4px 0 18px;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee-track{--gap:14px;display:flex;gap:var(--gap);width:max-content;animation:testi-marquee 52s linear infinite;will-change:transform}
+.testis.marquee:hover .marquee-track{animation-play-state:paused}
+.testi.img-card{flex:0 0 clamp(260px,42vw,440px);padding:8px;border-radius:14px;background:#fff}
+.testi.img-card img{display:block;width:100%;height:auto;border-radius:10px}
+@keyframes testi-marquee{from{transform:translateX(0)}to{transform:translateX(calc(-50% - var(--gap)/2))}}
+@media(prefers-reduced-motion:reduce){.testis.marquee{overflow-x:auto;mask-image:none}.marquee-track{animation:none}}
 @media(max-width:760px){.testis{grid-template-columns:1fr}}
+@media(max-width:680px){.testis.marquee{margin-left:-18px;margin-right:-18px}.testi.img-card{flex-basis:68vw}}
 
 /* RATES */
 .ratecard{background:#fff;border:1px solid rgba(36,29,21,.14);border-radius:18px;box-shadow:0 22px 42px -32px rgba(36,29,21,.4);padding:24px 26px;position:relative}
@@ -186,9 +194,9 @@ body::before{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;
 
 /* CONTACT */
 .contact{margin-top:46px;text-align:center;position:relative;padding:30px 0 8px}
-.contact .ch{font-family:var(--disp);font-size:clamp(32px,5vw,52px);font-weight:720;letter-spacing:0;line-height:1}
+.contact .ch{font-family:var(--disp);font-size:clamp(32px,5vw,52px);font-weight:720;letter-spacing:0;line-height:1;margin-bottom:22px}
 .contact .ch .u{display:inline-block;background:var(--yellow);padding:.02em .16em .06em;border-radius:.24em;line-height:1.02;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.contact .cs{font-family:var(--sans);font-size:16px;font-weight:650;color:var(--accent);margin:10px 0 22px}
+.contact .cs{font-family:var(--sans);font-size:16px;font-weight:650;color:var(--accent);margin:-12px 0 22px}
 .btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:800;font-size:15px;padding:15px 34px;border-radius:100px;box-shadow:0 16px 30px -18px var(--accent);transition:transform .3s var(--t),background .3s var(--t)}
 .btn:hover{background:var(--accent)}
 .btn:hover{transform:translateY(-2px)}
@@ -245,10 +253,9 @@ const REAL={
     {emoji:"✉️",url:"mailto:collabs.lola@gmail.com",t:"Email"}
   ],
   stats:[
-    {n:"43,8K", k:"Followers Instagram", sub:"@lola_nomadlife"},
-    {n:"12,3K", k:"Followers TikTok",    sub:"@lola_nomad_life"},
-    {n:"2,1M",  k:"Vues / 30 jours",     sub:"sur Instagram"},
-    {n:"10,8K", k:"Nouveaux followers",  sub:"en 30 jours"}
+    {n:"53K", k:"Followers Instagram", sub:"@lola_nomadlife"},
+    {n:"15K", k:"Followers TikTok",    sub:"@lola_nomad_life"},
+    {n:"2,1M",  k:"Vues / 30 jours",     sub:"sur Instagram"}
   ],
   testimonials:[
     {txt:"« Lu La femme à l'étage, Le cercle de Finsbury, 10 ans noces de sang… grâce à toi. Coup de cœur total »",who:"— une abonnée 🍀"},
@@ -263,6 +270,8 @@ const REAL={
       {name:"Post Instagram photo",desc:"Un post photo du livre avec avis détaillé en description.",price:"600€"},
       {name:"Pack TikTok + Instagram",desc:"La même vidéo, avis détaillé, sur chaque réseau.",price:"1000€"},
       {name:"Pack TikTok + Double Insta",desc:"La même vidéo sur chaque réseau + post Instagram photo.",price:"1300€"},
+      {name:"Whitelisting 30 jours",desc:"Droit d'amplification publicitaire du contenu pendant 30 jours.",price:"300€"},
+      {name:"Whitelisting 60 jours",desc:"Droit d'amplification publicitaire du contenu pendant 60 jours.",price:"500€"},
       {name:"Pack Complet",desc:"Vidéo TikTok + vidéo Instagram + post photo + min. 2 stories Instagram.",price:"1500€",feat:true}
     ]
   },
@@ -287,18 +296,27 @@ const THEMES={
 
 const TABS={
   book:{
-    kicker:"salut, moi c'est",
-    name:["Lola","reads"], script:"~ booktok ~",
-    handle:"BookTok FR",
-    portrait:"Lolaphoto.jpeg", portraitCap:"reading era 📖",
-    bubble:"📚 BookTok creator",
-    bio:"Créatrice book francophone. Mes recos font courir mes abonnées en librairie : thrillers, plot twists & coups de cœur. Des avis détaillés et authentiques qui font vendre des livres.",
-    chips:["📚 Thrillers / Romance","✨ Recos qui vendent","📖 Plot twists","🎙️ Mode Avion"],
+    kicker:"Hello , moi c'est",
+    name:["Lola","reads"], script:"",
+    handle:"",
+    portrait:"Lolaphoto.jpeg", portraitCap:"Lola 32 ans bookloveur et adventure addict",
+    bubble:"Créatrice littéraire & lifestyle",
+    bio:"Créatrice de contenu littéraire & lifestyle, je partage mes lectures comme je les vis : avec enthousiasme, spontanéité et beaucoup de sincérité.<br><br>Thrillers, polars, romans contemporains… je crée des contenus qui donnent envie de poser son téléphone, d’ouvrir un livre et de se laisser happer par une histoire.<br><br>Ici, on parle lectures, coups de cœur et plus encore toujours avec un ton accessible et vivant.",
+    chips:["Thriller / Polar / roman contemporain"],
+    testimonialImages:[
+      {src:"Testimonials/comment-1.png",alt:"Commentaire de tatsamy_bzh"},
+      {src:"Testimonials/comment-2.png",alt:"Commentaire de cherry_cokestyle"},
+      {src:"Testimonials/comment-3.png",alt:"Commentaire de louise_czurka"},
+      {src:"Testimonials/comment-4.png",alt:"Commentaire de ameliefoodfurieuse_ugc"},
+      {src:"Testimonials/comment-5.png",alt:"Commentaire de cherry_cokestyle"},
+      {src:"Testimonials/comment-6.png",alt:"Commentaire de charlotte.uceda"},
+      {src:"Testimonials/comment-7.png",alt:"Commentaire de alexandralamyofficiel"}
+    ],
     videos:[
-      {t:"5 livres à lire pour la 1ère fois",views:"635K",img:"Video%20Lola/video1lola.png",url:"#"},
-      {t:"Story time : le mec de ma mère était un gros psychopathe",views:"116K",img:"Video%20Lola/video2lola.png",pinned:true,url:"#"},
+      {t:"5 livres à lire pour la 1ère fois",views:"635K",img:"Video%20Lola/5livresalirepourla1erefois.jpeg",url:"#"},
+      {t:"Story time : le mec de ma mère était un gros psychopathe",views:"116K",img:"Video%20Lola/storytime-le-mec-de-mamere.jpeg",url:"#"},
       {t:"Coup de cœur de 2026",views:"120K",img:"Video%20Lola/video3lola.png",url:"#"},
-      {t:"5 livres que tu dois absolument lire",views:"446K",img:"Video%20Lola/video4lola.png",pinned:true,url:"#"}
+      {t:"5 livres que tu dois absolument lire",views:"446K",img:"Video%20Lola/5livresquetudoisabsolumentlire.jpeg",url:"#"}
     ]
   },
   life:{
@@ -348,6 +366,14 @@ function vidHTML(v){
   return `<button class="vid" type="button" onclick="openModal('${v.img}')" aria-label="Voir ${esc(v.t)} en grand">${thumb}</button>`;
 }
 
+function testimonialHTML(tab,R){
+  if(tab.testimonialImages?.length){
+    const loop=[...tab.testimonialImages,...tab.testimonialImages];
+    return `<div class="testis marquee"><div class="marquee-track">${loop.map((img,i)=>`<div class="testi img-card" ${i>=tab.testimonialImages.length?'aria-hidden="true"':''}><img src="${img.src}" alt="${esc(img.alt)}"></div>`).join("")}</div></div>`;
+  }
+  return `<div class="testis">${(tab.testimonials||R.testimonials).map(t=>`<div class="testi">${t.txt}<div class="who">${t.who}</div></div>`).join("")}</div>`;
+}
+
 function audienceHTML(){
   return `<div class="aud-grid">
     <div class="aud-card reveal">
@@ -386,11 +412,11 @@ function panel(tab){
   return `
   <div class="hero">
     <span class="star" style="top:18px;left:28px;font-size:18px">✦</span>
-    <span class="bubble">${tab.bubble}</span>
+    ${tab.bubble?`<span class="bubble">${tab.bubble}</span>`:""}
     <div class="kicker">${tab.kicker}</div>
     <div><span class="name">${tab.name[0]} <span class="hl">${tab.name[1]}</span></span></div>
-    <span class="script">${tab.script}</span>
-    <div class="handle">${tab.handle}</div>
+    ${tab.script?`<span class="script">${tab.script}</span>`:""}
+    ${tab.handle?`<div class="handle">${tab.handle}</div>`:""}
     <div class="hero-row">
       <div><div class="note"><span class="pin"></span><div class="nh">about me ✎</div>${tab.bio}
         <div class="chips">${tab.chips.map(c=>`<span class="chip">${c}</span>`).join("")}</div></div></div>
@@ -418,6 +444,7 @@ function panel(tab){
         </div>
       </div>
       <div class="stats-aside">
+        <div class="srow"><div class="sv">10,8K</div><div class="sl">Nouveaux followers<span>en 30 jours</span></div></div>
         <div class="srow"><div class="sv">82K</div><div class="sl">Interactions / 30 jours<span>sur Instagram</span></div></div>
         <div class="srow"><div class="sv">289,3K</div><div class="sl">Likes TikTok<span>@lola_nomad_life</span></div></div>
         <div class="srow"><div class="sv">113</div><div class="sl">Contenus / mois<span>tous réseaux confondus</span></div></div>
@@ -427,11 +454,11 @@ function panel(tab){
     <div class="shead"><span class="folder">🌍</span><h2 class="stitle">mon <span class="u">audience</span></h2></div>
     ${audienceHTML()}
 
-    <div class="shead"><span class="folder">🎬</span><h2 class="stitle">my <span class="u">videos</span></h2></div>
+    <div class="shead"><span class="folder">🎬</span><h2 class="stitle">Exemple de <span class="u">vidéo</span></h2></div>
     <div class="vids">${tab.videos.map(vidHTML).join("")}</div>
 
     <div class="shead"><span class="folder">💬</span><h2 class="stitle">ce qu'en disent <span class="u">mes abonnées</span></h2></div>
-    <div class="testis">${(tab.testimonials||R.testimonials).map(t=>`<div class="testi">${t.txt}<div class="who">${t.who}</div></div>`).join("")}</div>
+    ${testimonialHTML(tab,R)}
 
     <div class="shead"><span class="folder">💌</span><h2 class="stitle">rates & <span class="u">services</span></h2></div>
     <div class="ratecard">
@@ -442,7 +469,7 @@ function panel(tab){
 
     <div class="contact"><span class="star" style="top:6px;left:30%;font-size:20px">✦</span>
       <div class="ch">let's <span class="u">collab</span> ?</div>
-      <div class="cs">${tab.contactSub||"~ ton livre / produit mérite d'être vu ~"}</div>
+      ${tab.contactSub?`<div class="cs">${tab.contactSub}</div>`:""}
       <a class="btn" href="mailto:${R.contactEmail}">${R.contactEmail}</a>
     </div>
   </div>`;
@@ -496,7 +523,7 @@ openView('book');
 
 
 /* ── Dock & Modal ────────────────────────────── */
-document.getElementById('dock').innerHTML=REAL.socials.map(s=>`<a href="${s.url}" target="_blank" rel="noopener" title="${s.t}">${s.emoji}</a>`).join("");
+document.getElementById('dock').remove();
 
 function openModal(src){
   const m=document.getElementById('ssModal');
