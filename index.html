@@ -139,9 +139,13 @@ body::before{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;
 @media(max-width:680px){.bigstats{grid-template-columns:1fr}.bstat .bn{font-size:26px}}
 
 /* PHONE + STATS SPLIT */
-.numbers-split{display:grid;grid-template-columns:340px 1fr;gap:28px;align-items:center;margin:24px 0 8px}
+.numbers-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:center;margin:24px 0 8px}
 @media(max-width:760px){.numbers-split{grid-template-columns:1fr}}
 .phone-showcase{display:flex;justify-content:center}
+.stats-shot .polaroid{cursor:pointer;transform:rotate(-2deg);max-width:none;width:min(100%,430px);margin:0 auto}
+.stats-shot:nth-child(2) .polaroid{transform:rotate(1.5deg)}
+.stats-shot .polaroid .img{aspect-ratio:auto;height:auto}
+.stats-shot .polaroid .img img{object-fit:contain;height:auto}
 .stats-aside{display:grid;grid-template-columns:1fr;gap:9px}
 .srow{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#fff;border:1px solid rgba(36,29,21,.12);border-radius:12px;box-shadow:0 14px 28px -25px rgba(36,29,21,.34);transition:transform .3s var(--t)}
 .srow:hover{transform:translate(-2px,-2px)}
@@ -440,18 +444,17 @@ function panel(tab){
         </div>`).join('')}
     </div>
     <div class="numbers-split">
-      <div class="phone-showcase">
-        <div class="polaroid" onclick="openModal('Stats%20Lola/lolastat-june.png')" role="button" tabindex="0" style="cursor:pointer;transform:rotate(-2deg);max-width:none;width:320px;margin:0 auto">
-          <div class="img" style="aspect-ratio:auto;height:auto"><img src="Stats%20Lola/lolastat-june.png" alt="Stats Instagram juin" loading="lazy" style="object-fit:contain;height:auto"></div>
-          <div class="cap">stats · 24 mai–22 juin ✦</div>
+      <div class="phone-showcase stats-shot">
+        <div class="polaroid" onclick="openModal('Stats%20Lola/lolastat-june.png')" role="button" tabindex="0">
+          <div class="img"><img src="Stats%20Lola/lolastat-june.png" alt="Stats Instagram juin" loading="lazy"></div>
+          <div class="cap">stats Instagram · 24 mai–22 juin ✦</div>
         </div>
       </div>
-      <div class="stats-aside">
-        <div class="srow"><div class="sv">12,3K</div><div class="sl">Nouveaux followers<span>en 30 jours</span></div></div>
-        <div class="srow"><div class="sv">102,4K</div><div class="sl">Interactions / 30 jours<span>sur Instagram</span></div></div>
-        <div class="srow"><div class="sv">289,3K</div><div class="sl">Likes TikTok<span>@lola_nomad_life</span></div></div>
-        <div class="srow"><div class="sv">173</div><div class="sl">Contenus / mois<span>tous réseaux confondus</span></div></div>
-        <div class="srow"><div class="sv">604</div><div class="sl">Posts au total<span>Instagram</span></div></div>
+      <div class="phone-showcase stats-shot">
+        <div class="polaroid" onclick="openModal('Stats%20Lola/tiktokola.png')" role="button" tabindex="0">
+          <div class="img"><img src="Stats%20Lola/tiktokola.png" alt="Stats TikTok juillet" loading="lazy"></div>
+          <div class="cap">stats TikTok · 10 juin–7 juil. ✦</div>
+        </div>
       </div>
     </div>
     <div class="shead"><span class="folder">🌍</span><h2 class="stitle">mon <span class="u">audience</span></h2></div>
