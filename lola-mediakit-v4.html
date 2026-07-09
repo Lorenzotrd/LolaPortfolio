@@ -86,6 +86,8 @@ body::before{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;
 .note{position:relative;background:var(--note);padding:22px 26px 24px;border:1px solid rgba(36,29,21,.10);border-radius:16px;box-shadow:0 20px 42px -30px rgba(36,29,21,.35);font-size:15.5px;line-height:1.45}
 .note .nh{font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:0;text-transform:uppercase;margin-bottom:12px;color:var(--accent)}
 .note .pin{display:none}
+.note p{margin:0 0 10px}
+.note p:last-of-type{margin-bottom:0}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .chip{font-size:12.5px;font-weight:700;background:#fff;border:1px solid rgba(36,29,21,.14);border-radius:100px;padding:7px 13px;color:var(--ink)}
 .polaroid{position:relative;background:#fff;padding:11px 11px 40px;border-radius:4px;box-shadow:0 18px 34px -16px rgba(0,0,0,.4);transform:rotate(3deg);transition:transform .4s var(--t);max-width:85%;margin:0 auto}
@@ -94,7 +96,7 @@ body::before{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;
 .polaroid .img{aspect-ratio:4/5;border-radius:2px;background:linear-gradient(150deg,var(--accent),var(--yellow));display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.85);font-family:var(--sans);font-size:20px;overflow:hidden}
 .polaroid .img img{width:100%;height:100%;object-fit:cover;object-position:center top}
 .polaroid .cap{font-family:var(--sans);font-size:13px;font-weight:650;text-align:center;margin-top:8px;color:var(--ink)}
-.portrait-wrap .polaroid .cap{min-height:46px;display:flex;align-items:center;justify-content:center;margin-top:0;padding:8px 4px 2px;line-height:1.18}
+.portrait-wrap .polaroid .cap{min-height:74px;display:flex;align-items:center;justify-content:center;margin-top:0;padding:8px 4px 2px;line-height:1.2}
 .polaroid .tape{top:-10px;left:50%;margin-left:-37px;transform:rotate(-4deg)}
 @media(max-width:680px){.hero-row{grid-template-columns:1fr;gap:20px;margin-top:20px}.portrait-wrap{width:min(220px,68vw);max-width:none}.portrait-wrap .clip{top:-15px;right:-12px;font-size:28px}.polaroid{max-width:200px;margin:0 auto}.portrait-wrap .polaroid{max-width:100%}.bubble{display:none}}
 
@@ -268,12 +270,12 @@ const REAL={
     rows:[
       {name:"Vidéo TikTok",desc:"Une vidéo avec avis détaillé et authentique sur le livre.",price:"600€"},
       {name:"Vidéo Instagram",desc:"Une vidéo avec avis détaillé et authentique sur le livre.",price:"600€"},
-      {name:"Post Instagram photo",desc:"Un post photo du livre avec avis détaillé en description.",price:"600€"},
+      {name:"Carousel Instagram",desc:"Un carousel Instagram du livre avec avis détaillé en description.",price:"600€"},
       {name:"Pack TikTok + Instagram",desc:"La même vidéo, avis détaillé, sur chaque réseau.",price:"1000€"},
       {name:"Pack TikTok + Double Insta",desc:"La même vidéo sur chaque réseau + post Instagram photo.",price:"1300€"},
       {name:"Whitelisting 30 jours",desc:"Droit d'amplification publicitaire du contenu pendant 30 jours.",price:"300€"},
       {name:"Whitelisting 60 jours",desc:"Droit d'amplification publicitaire du contenu pendant 60 jours.",price:"500€"},
-      {name:"Pack Complet",desc:"Vidéo TikTok + vidéo Instagram + post photo + min. 2 stories Instagram.",price:"1500€",feat:true}
+      {name:"Pack Complet",desc:"Vidéo TikTok + vidéo Instagram + min. 2 stories Instagram.",price:"1500€",feat:true}
     ]
   },
   phones:[
@@ -298,11 +300,11 @@ const THEMES={
 const TABS={
   book:{
     kicker:"Hello , moi c'est",
-    name:["Lola","reads"], script:"",
+    name:["","Lola"], script:"",
     handle:"",
-    portrait:"Lolaphoto.jpeg", portraitCap:"Lola 32 ans bookloveur et adventure addict",
+    portrait:"Lolaphoto.jpeg", portraitCap:"Lola 32 ans,<br>bookish & adventure addict<br>📚🌞⛰️✈️",
     bubble:"Créatrice littéraire & lifestyle",
-    bio:"Créatrice de contenu littéraire & lifestyle, je partage mes lectures comme je les vis : avec enthousiasme, spontanéité et beaucoup de sincérité.<br>Thrillers, polars, romans contemporains… je crée des contenus qui donnent envie de poser son téléphone, d’ouvrir un livre et de se laisser happer par une histoire.<br>Ici, on parle lectures, coups de cœur et plus encore toujours avec un ton accessible et vivant.",
+    bio:"<p>Créatrice de contenu littéraire & lifestyle, je partage mes lectures comme je les vis : avec enthousiasme, spontanéité et beaucoup de sincérité.</p><p>Thrillers, polars, romans contemporains… je crée des contenus qui donnent envie de poser son téléphone, d’ouvrir un livre et de se laisser happer par une histoire.</p><p>Ici, on parle lectures, coups de cœur et plus encore toujours avec un ton accessible et vivant.</p>",
     chips:["🔪 Thriller","🕵️ Polar","📖 Roman contemporain"],
     testimonialImages:[
       {src:"Testimonials/comment-1.png",alt:"Commentaire de tatsamy_bzh"},
@@ -338,10 +340,10 @@ const TABS={
       rows:[
         {name:"Story Instagram",desc:"Une série de stories authentiques avec lien swipe-up.",price:"400€"},
         {name:"Reel Instagram",desc:"Un reel avec mise en avant naturelle du produit ou lieu.",price:"700€"},
-        {name:"Post Instagram photo",desc:"Un post photo esthétique avec description détaillée.",price:"600€"},
+        {name:"Carousel Instagram",desc:"Un carousel Instagram esthétique avec description détaillée.",price:"600€"},
         {name:"Vidéo TikTok",desc:"Une vidéo TikTok avec avis sincère et mise en scène lifestyle.",price:"600€"},
         {name:"Pack Reel + Stories",desc:"Un reel + série de stories Instagram.",price:"1000€"},
-        {name:"Pack Complet",desc:"Reel + Post photo + Stories Instagram + Vidéo TikTok.",price:"1500€",feat:true}
+        {name:"Pack Complet",desc:"Reel + Stories Instagram + Vidéo TikTok.",price:"1500€",feat:true}
       ]
     },
     contactSub:"~ ta marque / destination mérite d'être vue ~",
@@ -415,7 +417,7 @@ function panel(tab){
     <span class="star" style="top:18px;left:28px;font-size:18px">✦</span>
     ${tab.bubble?`<span class="bubble">${tab.bubble}</span>`:""}
     <div class="kicker">${tab.kicker}</div>
-    <div><span class="name">${tab.name[0]} <span class="hl">${tab.name[1]}</span></span></div>
+    <div><span class="name">${tab.name[0]?`${tab.name[0]} `:""}<span class="hl">${tab.name[1]}</span></span></div>
     ${tab.script?`<span class="script">${tab.script}</span>`:""}
     ${tab.handle?`<div class="handle">${tab.handle}</div>`:""}
     <div class="hero-row">
@@ -428,7 +430,7 @@ function panel(tab){
     </div>
   </div>
   <div class="pad">
-    <div class="shead"><span class="folder">📊</span><h2 class="stitle">the <span class="u">numbers</span></h2></div>
+    <div class="shead"><span class="folder">📊</span><h2 class="stitle">mes <span class="u">stats</span></h2></div>
     <div class="bigstats">
       ${R.stats.map(s=>`
         <div class="bstat reveal">
@@ -455,13 +457,13 @@ function panel(tab){
     <div class="shead"><span class="folder">🌍</span><h2 class="stitle">mon <span class="u">audience</span></h2></div>
     ${audienceHTML()}
 
-    <div class="shead"><span class="folder">🎬</span><h2 class="stitle">Exemple de <span class="u">vidéo</span></h2></div>
+    <div class="shead"><span class="folder">🎬</span><h2 class="stitle">exemple de <span class="u">vidéo</span></h2></div>
     <div class="vids">${tab.videos.map(vidHTML).join("")}</div>
 
     <div class="shead"><span class="folder">💬</span><h2 class="stitle">ce qu'en disent <span class="u">mes abonnées</span></h2></div>
     ${testimonialHTML(tab,R)}
 
-    <div class="shead"><span class="folder">💌</span><h2 class="stitle">rates & <span class="u">services</span></h2></div>
+    <div class="shead"><span class="folder">💌</span><h2 class="stitle">mes <span class="u">tarifs</span></h2></div>
     <div class="ratecard">
       <span class="tagp">tarifs 2026</span>
       <div class="rate-incl">${(tab.rates||R.rates).incl}</div>
